@@ -1,9 +1,62 @@
+:root {
+  font-size: 16px;
+}
+
 body {
   margin: 0;
+  font-family: monospace;
+  background: #eee;
+  color: #111;
+}
+
+header {
   width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+  text-align: center;
+}
+
+.app {
+  margin: 0 auto;
+  width: 90vw;
   display: flex;
-  align-items: center;
+  flex-flow: row nowrap;
+  align-items: flex-start;
   justify-content: center;
+}
+
+.user-input {
+  background: #111;
+  color: #eee;
+  padding: 1rem 2rem 2rem;
+  margin-top: 1rem;
+}
+
+.output {
+  margin: 2rem;
+  flex-grow: 1;
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+}
+
+#text-input {
+  width: 15rem;
+}
+
+.text-area, .svg-area {
+  margin-bottom: 2rem;
+}
+
+h3 {
+  text-align: left;
+}
+
+.text-target {
+  display: block;
+  font-size: 0.8rem;
+  box-sizing: border-box;
+  padding: 1rem;
+  border: 1px solid black;
+  text-align: left;
 }

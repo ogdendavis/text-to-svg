@@ -6,7 +6,30 @@
     <link rel="stylesheet" href="./style.css">
   </head>
   <body>
-    <div class="target"></div>
+    <header>
+      <h1>Text to SVG</h1>
+      <p>Enter text and options, get an svg!</p>
+      <p>Useful for displaying contact info on a website without making it easy for spammers to get your info</p>
+    </header>
+    <div class="app">
+      <div class="user-input">
+        <h2>Input</h2>
+        <label>Text:</label>
+        <input type="text" value="Hello, World!" id="text-input"></input>
+      </div>
+      <div class="output">
+        <h2>Output</h2>
+        <div class="svg-area">
+          <h3>Image:</h3>
+          <div class="svg-target"></div>
+          <a href="#">Click to download</a>
+        </div>
+        <div class="text-area">
+          <h3>Code:</h3>
+          <code class="text-target"></code>
+        </div>
+      </div>
+    </div>
     <script src="./app.js" type="text/javascript"></script>
   </body>
 </html>

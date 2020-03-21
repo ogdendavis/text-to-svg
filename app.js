@@ -104,4 +104,25 @@ const getLetterPoints = (l,x,y) => {
   return l in lookup ? lookup[l] : false;
 }
 
-document.querySelector('.target').appendChild(stringToSVG('720-772-8296'));
+const formatTextForDisplay = (t) => {
+  return t.replace('>','>\n').replace(/<\/polygon>/g, '</polygon>\n').replace(/<p/g,'\xa0\xa0\xa0\xa0<p');
+}
+
+window.onload = () => {
+  // Get inputs
+  const textInput = document.querySelector('#text-input');
+
+  // Get targets
+  const svgTarget = document.querySelector('.svg-target');
+  const textTarget = document.querySelector('.text-target');
+
+  // Set up starter values
+  const starterSVG = stringToSVG('Hello, World!')
+  svgTarget.appendChild(starterSVG);
+  textTarget.innerText = formatTextForDisplay(starterSVG.parentNode.innerHTML);
+
+  textInput.addEventListener('input', (e) => {
+    svgTarget.firstElementChild.replaceWith(stringToSVG(e.target.value));
+    textTarget.innerText = formatTextForDisplay(svgTarget.innerHTML);
+  });
+}
