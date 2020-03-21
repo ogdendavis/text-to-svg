@@ -104,8 +104,13 @@ const getLetterPoints = (l,x,y) => {
   return l in lookup ? lookup[l] : false;
 }
 
-const formatTextForDisplay = (t) => {
-  return t.replace('>','>\n').replace(/<\/polygon>/g, '</polygon>\n').replace(/<p/g,'\xa0\xa0\xa0\xa0<p');
+const formatTextForDisplay = (svg) => {
+  return svg.outerHTML.replace('>','>\n').replace(/<\/polygon>/g, '</polygon>\n').replace(/<p/g,'\xa0\xa0\xa0\xa0<p');
+}
+
+const makeSVGDownloadURL = (svg) => {
+  const svgAsXML = (new XMLSerializer).serializeToString(svg);
+  return 'data:image/svg+xml,' + encodeURIComponent(svgAsXML);
 }
 
 window.onload = () => {
@@ -115,14 +120,20 @@ window.onload = () => {
   // Get targets
   const svgTarget = document.querySelector('.svg-target');
   const textTarget = document.querySelector('.text-target');
+  const downloadTarget = document.querySelector('.download-target');
 
   // Set up starter values
   const starterSVG = stringToSVG('Hello, World!')
   svgTarget.appendChild(starterSVG);
-  textTarget.innerText = formatTextForDisplay(starterSVG.parentNode.innerHTML);
+  textTarget.innerText = formatTextForDisplay(starterSVG);
+  downloadTarget.setAttribute('href',makeSVGDownloadURL(starterSVG));
+  downloadTarget.setAttribute('download','textToSVG.svg');
 
   textInput.addEventListener('input', (e) => {
-    svgTarget.firstElementChild.replaceWith(stringToSVG(e.target.value));
-    textTarget.innerText = formatTextForDisplay(svgTarget.innerHTML);
+    const newSVG = stringToSVG(e.target.value);
+    svgTarget.firstElementChild.replaceWith(newSVG);
+    textTarget.innerText = formatTextForDisplay(newSVG);
+    downloadTarget.setAttribute('href',makeSVGDownloadURL(newSVG));
+    downloadTarget.setAttribute('download','textToSVG.svg');
   });
 }
