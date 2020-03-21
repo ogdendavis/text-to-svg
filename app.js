@@ -51,13 +51,7 @@ const stringToSVG = (str, pxSize=.5, width=100, lineHeight=12) => {
     y = row + yOff;
 
     // Set the points for the svg
-    const points = getLetterPoints(char,x,y);
-    if (points) {
-      poly.setAttribute('points', points);
-    }
-    else {
-      console.error(`I don't know "${char}"`);
-    }
+    poly.setAttribute('points', getLetterPoints(char,x,y));
 
     // Append the finished polygon
     svg.appendChild(poly);
@@ -78,6 +72,7 @@ const stringToSVG = (str, pxSize=.5, width=100, lineHeight=12) => {
 
 const getLetterPoints = (l,x,y) => {
   const lookup = {
+    'NOMATCH': `${x},${y} ${x+4},${y} ${x+4},${y+5} ${x},${y+5}`,
     '.': `${x},${y} ${x+2},${y} ${x+2},${y+2} ${x},${y+2}`,
     '-': `${x},${y} ${x+3},${y} ${x+3},${y+1} ${x},${y+1}`,
     '@': `${x+4},${y+4} ${x+4},${y+3} ${x+3},${y+3} ${x+3},${y+4} ${x+5},${y+4} ${x+5},${y+5} ${x+2},${y+5} ${x+2},${y+2} ${x+4},${y+2} ${x+4},${y+4} ${x+5},${y+4} ${x+5},${y+1} ${x+4},${y+1} ${x+4},${y} ${x+1},${y} ${x+1},${y+7} ${x+5},${y+7} ${x+5},${y+6} ${x},${y+6} ${x},${y+1} ${x+4},${y+1}`,
@@ -101,7 +96,14 @@ const getLetterPoints = (l,x,y) => {
     'u': `${x},${y} ${x+1},${y} ${x+1},${y+5} ${x+3},${y+5} ${x+3},${y} ${x+4},${y} ${x+4},${y+4} ${x},${y+4}`,
     'v': `${x},${y} ${x+1},${y} ${x+1},${y+5} ${x+2},${y+5} ${x+2},${y} ${x+3},${y} ${x+3},${y+4} ${x},${y+4}`,
   }
-  return l in lookup ? lookup[l] : false;
+  
+  if (l in lookup) {
+    return lookup[l];
+  }
+  else {
+    console.error(`I don't know ${l}`);
+    return lookup.NOMATCH;
+  }
 }
 
 const formatTextForDisplay = (svg) => {
