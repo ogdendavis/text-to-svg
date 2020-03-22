@@ -3,7 +3,7 @@ An easy GUI for creating pixel-font SVGs of text. Useful for visually displaying
 
 The SVG is dynamically generated as you enter text and adjust the options, so you can tweak the presentation as you create your SVG.
 
-##Why use an SVG for contact info?
+## Why use an SVG for contact info?
 Spammers (and others) use bots to 'scrape' websites, searching the text for valuable information such as email addresses and phone numbers. When you publish your contact information online, spammers will get a hold of it, and you'll have to deal with the junk they send you.
 
 If you want to give real humans a way to get in touch with you online while avoiding spammers, you have a few options:
@@ -20,18 +20,18 @@ An SVG is simply a vector image generated via XML. In theory, a bot could be pro
 ## How to use it
 Simply enter the text, adjust your options, and you're good to go!
 
-###SVG options:
+### SVG options:
 * **Text**: The text you wish to convert to SVG. There is no limit on the length, but best practice is to keep it short and sweet.
 * **'Pixel' size**: The size, in actual pixels, of each 'pixel' that makes up the letters. Basically, this controls the size of the text in your SVG.
 * **Line width**: The number of 'pixels' that are displayed horizontally on one line of text in the SVG. If you multiply 'pixel' size and line width, you'll get the maximum width of your SVG, in actual pixels.
 * **Line spacing**: The number of 'pixels' between the bottom of one row of text and the top of the next. This isn't exact, since some characters are taller than others.
 
-###Output:
+### Output:
 You can get your SVG in two ways:
 1. Click the 'click to download' link, right underneath the image. You can use the downloaded file just like you would any other image file.
 2. Copy the code from the code box, and insert it in your webpage.
 
-##Future updates
+## Future updates
 This project is currently pretty bare-bones. I made it as a tool to use while redesigning my own website. I plan to update this project as I have the time and interest in the future. Planned improvements include:
 
 * Add text color selection
@@ -40,5 +40,5 @@ This project is currently pretty bare-bones. I made it as a tool to use while re
 
 If you have suggestions for future updates, or would like to contribute, feel free to submit an issue or pull request here, or get in touch with me at [my website](https://ogdendavis.com/).
 
-##License
+## License
 This project is licensed under the terms of the [MIT license](https://www.mit.edu/~amini/LICENSE.md).
