@@ -1,4 +1,4 @@
-const stringToSVG = (str, pxSize=.5, width=100, lineHeight=12) => {
+const stringToSVG = (str, pxSize=6, width=100, lineHeight=12) => {
   /* Basic function to convert a string to an SVG. No line breaks or options (yet)
    * Parameters:
    * str (string, required): String to conver to svg
@@ -73,8 +73,8 @@ const stringToSVG = (str, pxSize=.5, width=100, lineHeight=12) => {
   svg.setAttribute('xmlns','http://www.w3.org/2000/svg');
   svg.setAttribute('shape-rendering','crispEdges');
   svg.setAttribute('viewBox',`0 0 ${Math.min(longestRow, width)} ${row + 7}`);
-  svg.setAttribute('width', `${Math.min(longestRow, width) * pxSize}rem`);
-  svg.setAttribute('height', `${(row + 7) * pxSize}rem`);
+  svg.setAttribute('width', `${Math.min(longestRow, width) * pxSize}px`);
+  svg.setAttribute('height', `${(row + 7) * pxSize}px`);
 
   return svg;
 }
@@ -150,6 +150,10 @@ const makeSVGDownloadURL = (svg) => {
 window.onload = () => {
   // Get inputs
   const textInput = document.querySelector('#text-input');
+  const pxInput = document.querySelector('#pixel-input');
+  const widthInput = document.querySelector('#width-input');
+  const heightInput = document.querySelector('#height-input');
+  const allInputs = [textInput, pxInput, widthInput, heightInput];
 
   // Get targets
   const svgTarget = document.querySelector('.svg-target');
@@ -157,17 +161,19 @@ window.onload = () => {
   const downloadTarget = document.querySelector('.download-target');
 
   // Set up starter values
-  const starterSVG = stringToSVG(textInput.value);
+  const starterSVG = stringToSVG(textInput.value, pxInput.value, widthInput.value, Number(heightInput.value) + 5);
   svgTarget.appendChild(starterSVG);
   textTarget.innerText = formatTextForDisplay(starterSVG);
   downloadTarget.setAttribute('href',makeSVGDownloadURL(starterSVG));
   downloadTarget.setAttribute('download','textToSVG.svg');
 
-  textInput.addEventListener('input', (e) => {
-    const newSVG = stringToSVG(e.target.value);
-    svgTarget.firstElementChild.replaceWith(newSVG);
-    textTarget.innerText = formatTextForDisplay(newSVG);
-    downloadTarget.setAttribute('href',makeSVGDownloadURL(newSVG));
-    downloadTarget.setAttribute('download','textToSVG.svg');
+  allInputs.forEach(input => {
+    input.addEventListener('input', (e) => {
+      const newSVG = stringToSVG(textInput.value, pxInput.value, widthInput.value, Number(heightInput.value) + 5);
+      svgTarget.firstElementChild.replaceWith(newSVG);
+      textTarget.innerText = formatTextForDisplay(newSVG);
+      downloadTarget.setAttribute('href',makeSVGDownloadURL(newSVG));
+      downloadTarget.setAttribute('download','textToSVG.svg');
+    });
   });
 }

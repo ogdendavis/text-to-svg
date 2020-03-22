@@ -14,8 +14,22 @@
     <div class="app">
       <div class="user-input">
         <h2>Input</h2>
-        <label>Text:</label>
-        <input type="text" value="Http://www.google.com" id="text-input"></input>
+        <div class="input__row">
+          <label>Text:</label>
+          <input type="text" value="It's SVG Time!" id="text-input"></input>
+        </div>
+        <div class="input__row">
+          <label>'Pixel' size:<br><span class="input__unit">(in actual pixels)</span></label>
+          <input type="number" value="6" min="1" max="60" id="pixel-input"></input>
+        </div>
+        <div class="input__row">
+          <label>Line width:<br><span class="input__unit">(in 'pixels')</span></label>
+          <input type="number" value="100" min="20" max="300" id="width-input"></input>
+        </div>
+        <div class="input__row">
+          <label>Line spacing:<br><span class="input__unit">(in 'pixels')</span></label>
+          <input type="number" value="3" min="0" max="20" id="height-input"></input>
+        </div>
       </div>
       <div class="output">
         <h2>Output</h2>
