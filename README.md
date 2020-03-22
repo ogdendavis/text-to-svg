@@ -8,11 +8,11 @@ Spammers (and others) use bots to 'scrape' websites, searching the text for valu
 
 If you want to give real humans a way to get in touch with you online while avoiding spammers, you have a few options:
 
-* **Use a contact form**
+* **Use a contact form**.
   This keeps your personal info away from spammers, but your form will get spammed
-* **Replace characters with HTML entities**
+* **Replace characters with HTML entities**.
   You can replace the characters in your contact information with their [HTML entities](https://developer.mozilla.org/en-US/docs/Glossary/Entity). This used to work well, back when simple bots just scanned the page source for characters, but isn't very effective now, as bots typically render a page and then scan the rendered HTML.
-* **Use an image**
+* **Use an image**.
   If you put your contact information as an image, bots won't be able to get it from your page. There are some accessibility concerns (users on screen readers won't be able to get your contact info, for example), but it's generally considered the best way to avoid releasing your contact info to every spammer on the internet.
 
 An SVG is simply a vector image generated via XML. In theory, a bot could be programmed to render an SVG image and read the words that it is displaying. In practice, that's a lot more computational effort than just scanning text, so it's more efficient for spammers just to focus their efforts on the schmucks who leave their contact info out for any ol' bot to grab.
